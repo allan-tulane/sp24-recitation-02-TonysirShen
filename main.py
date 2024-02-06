@@ -4,11 +4,13 @@ CMPS 2200  Recitation 2
 
 ### the only imports needed are here
 import tabulate
-import time
+##from test_main import *
 ###
 
 def simple_work_calc(n, a, b):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + n
+  
+  return a*(n/b) + n
+"""Compute the value of the recurrence $W(n) = aW(n/b) + n
 
 	Params:
 	n......input integer
@@ -18,10 +20,11 @@ def simple_work_calc(n, a, b):
 	Returns: the value of W(n).
 	"""
 	# TODO
-	pass
+
 
 def work_calc(n, a, b, f):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
+  return a*(n/b) + f(n)
+"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
 
 	Params:
 	n......input integer
@@ -32,12 +35,11 @@ def work_calc(n, a, b, f):
 
 	Returns: the value of W(n).
 	"""
-	# TODO
-	pass
 
 def span_calc(n, a, b, f):
-	"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
-
+  return (n/b) + f(n)
+"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
+  
 	Params:
 	n......input integer
 	a......branching factor of recursion tree
@@ -47,8 +49,6 @@ def span_calc(n, a, b, f):
 
 	Returns: the value of W(n).
 	"""
-	# TODO
-	pass
 
 
 
@@ -96,9 +96,8 @@ def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 		# compute W(n) using current a, b, f
 		result.append((
 			n,
-			span_fn1,
-			span_fn2
+			span_fn1(n),
+			span_fn2(n)
 			))
 	return result
 	
-

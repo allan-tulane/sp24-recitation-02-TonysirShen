@@ -1,7 +1,7 @@
 # CMPS 2200  Recitation 02
 
-**Name (Team Member 1):**_________________________  
-**Name (Team Member 2):**_________________________
+**Name (Team Member 1):**_______Tony Shen__________________  
+**Name (Team Member 2):**_________Sean Hall________________
 
 In this recitation, we will investigate recurrences. 
 To complete this recitation, follow the instructions in this document. Some of your answers will go in this file, and others will require you to edit `main.py`.
@@ -37,12 +37,24 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-**TODO: your answer goes here**
+W(n) = O(logn) when f(n) = 1
+W(n) = aW(n/b) + n had a asymptotic behavior of O(nlogn)
+W(n) = aW(n/b) + logn had a asymptotic behavior of O(log^2n)
 
-- [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
-**TODO: your answer goes here**
+- [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
+W_1        w_2
+a = 16     a = 16
+b = 2      b = 2
+c = 2       c  = 6
 
+When $c < \log_b a$, the recursion tree is leave dominated, and its asypmptotic behavior will be O(n^(log_b a))
+
+When $c > \log_b a$, the recursion tree is leave dominated, and its asypmptotic behavior will be O(n^c)
+
+When $c > \log_b a$, the recursion tree is leave dominated, and its asypmptotic behavior will be O(n^c)
+
+WHEN  $c > \log_b a$ the recurtion tree is balanced, and its asypmptotic behavier will be O(n^c*logn)
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
 **TODO: your answer goes here**
