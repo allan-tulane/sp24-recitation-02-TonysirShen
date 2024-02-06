@@ -8,8 +8,10 @@ import tabulate
 ###
 
 def simple_work_calc(n, a, b):
-  
-  return a*(n/b) + n
+  if n <= 1:
+    return n
+  else:
+    return a* simple_work_calc(n//b,a,b) + n
 """Compute the value of the recurrence $W(n) = aW(n/b) + n
 
 	Params:
@@ -23,7 +25,10 @@ def simple_work_calc(n, a, b):
 
 
 def work_calc(n, a, b, f):
-  return a*(n/b) + f(n)
+  if n <= 1:
+    return f(1)
+  else:
+    return a*work_calc(n//b,a,b,f) + f(n)
 """Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
 
 	Params:
@@ -37,7 +42,10 @@ def work_calc(n, a, b, f):
 	"""
 
 def span_calc(n, a, b, f):
-  return (n/b) + f(n)
+  if n <= 1:
+    return f(1)
+  else:
+    return span_calc(n//b,a,b,f) + f(n)
 """Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
   
 	Params:
@@ -81,7 +89,7 @@ def print_results(results):
 
 
 
-def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
+def compare_span(span_fn1, span_fn2, span_fn3, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
 	"""
 	Compare the values of different recurrences for 
 	given input sizes.
@@ -100,4 +108,10 @@ def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 			span_fn2(n)
 			))
 	return result
-	
+
+print(simple_work_calc(10, 2, 2),
+simple_work_calc(20, 3, 2),
+simple_work_calc(30, 4, 2),
+simple_work_calc(10, 2, 5),
+simple_work_calc(20, 2, 5),
+simple_work_calc(30, 2, 5))
